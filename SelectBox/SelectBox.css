@@ -27,7 +27,7 @@
 body[dir=rtl] .teva-selectbox.teva-selectbox-arrows .teva-selectbox-label {
   padding-left: 28px;
 }
-body[dir=ltr] .teva-selectbox.teva-selectbox-arrows .teva-selectbox-label {
+body:not([dir=rtl]) .teva-selectbox.teva-selectbox-arrows .teva-selectbox-label {
   padding-right: 28px;
 }
 .teva-selectbox.teva-selectbox-arrows .teva-selectbox-label:after {
@@ -41,7 +41,7 @@ body[dir=ltr] .teva-selectbox.teva-selectbox-arrows .teva-selectbox-label {
 body[dir=rtl] .teva-selectbox.teva-selectbox-arrows .teva-selectbox-label:after {
   left: 8px;
 }
-body[dir=ltr] .teva-selectbox.teva-selectbox-arrows .teva-selectbox-label:after {
+body:not([dir=rtl]) .teva-selectbox.teva-selectbox-arrows .teva-selectbox-label:after {
   right: 8px;
 }
 .teva-selectbox-disabled {
@@ -84,7 +84,7 @@ body[dir=ltr] .teva-selectbox.teva-selectbox-arrows .teva-selectbox-label:after 
 body[dir=rtl] .teva-selectbox-search.teva-selectbox-search-icon .teva-selectbox-search-terms {
   padding-left: 32px;
 }
-body[dir=ltr] .teva-selectbox-search.teva-selectbox-search-icon .teva-selectbox-search-terms {
+body:not([dir=rtl]) .teva-selectbox-search.teva-selectbox-search-icon .teva-selectbox-search-terms {
   padding-right: 32px;
 }
 .teva-selectbox-search.teva-selectbox-search-icon .teva-selectbox-search-terms:after {
@@ -98,7 +98,7 @@ body[dir=ltr] .teva-selectbox-search.teva-selectbox-search-icon .teva-selectbox-
 body[dir=rtl] .teva-selectbox-search.teva-selectbox-search-icon .teva-selectbox-search-terms:after {
   left: 8px;
 }
-body[dir=ltr] .teva-selectbox-search.teva-selectbox-search-icon .teva-selectbox-search-terms:after {
+body:not([dir=rtl]) .teva-selectbox-search.teva-selectbox-search-icon .teva-selectbox-search-terms:after {
   right: 8px;
 }
 .teva-selectbox-search.teva-selectbox-search-loading .teva-selectbox-search-terms:after {
@@ -115,7 +115,7 @@ body[dir=ltr] .teva-selectbox-search.teva-selectbox-search-icon .teva-selectbox-
 body[dir=rtl] .teva-selectbox-search.teva-selectbox-search-loading .teva-selectbox-search-terms:after {
   left: 8px;
 }
-body[dir=ltr] .teva-selectbox-search.teva-selectbox-search-loading .teva-selectbox-search-terms:after {
+body:not([dir=rtl]) .teva-selectbox-search.teva-selectbox-search-loading .teva-selectbox-search-terms:after {
   right: 8px;
 }
 .teva-selectbox-search-terms {

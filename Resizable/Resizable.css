@@ -25,7 +25,7 @@
 body[dir=rtl] .teva-resizable-resizer {
   left: 0;
 }
-body[dir=ltr] .teva-resizable-resizer {
+body:not([dir=rtl]) .teva-resizable-resizer {
   right: 0;
 }
 body[dir=rtl] .teva-resizable-resizer {
@@ -33,7 +33,7 @@ body[dir=rtl] .teva-resizable-resizer {
   border-color: transparent transparent transparent #503d15;
   cursor: sw-resize !important;
 }
-body[dir=ltr] .teva-resizable-resizer {
+body:not([dir=rtl]) .teva-resizable-resizer {
   border-width: 0 0 10px 10px;
   border-color: transparent transparent #503d15 transparent;
   cursor: se-resize !important;
@@ -41,6 +41,6 @@ body[dir=ltr] .teva-resizable-resizer {
 body[dir=rtl] .teva-resizable-cursor {
   cursor: sw-resize !important;
 }
-body[dir=ltr] .teva-resizable-cursor {
+body:not([dir=rtl]) .teva-resizable-cursor {
   cursor: se-resize !important;
 }

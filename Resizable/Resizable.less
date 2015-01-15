@@ -18,7 +18,7 @@
             cursor: sw-resize !important;
         }
 
-        body[dir=ltr] & {
+        body:not([dir=rtl]) & {
             border-width: 0 0 10px 10px;
             border-color: transparent transparent @color-text transparent;
             cursor: se-resize !important;
@@ -30,7 +30,7 @@
             cursor: sw-resize !important;
         }
 
-        body[dir=ltr] & {
+        body:not([dir=rtl]) & {
             cursor: se-resize !important;
         }
     }

@@ -32,14 +32,14 @@
 body[dir=rtl] .teva-dropdown-link:not(.teva-dropdown-link-noindicator):after {
   left: 0;
 }
-body[dir=ltr] .teva-dropdown-link:not(.teva-dropdown-link-noindicator):after {
+body:not([dir=rtl]) .teva-dropdown-link:not(.teva-dropdown-link-noindicator):after {
   right: 0;
 }
 body[dir=rtl] .teva-dropdown-link:not(.teva-dropdown-link-noindicator):after {
   border-width: 10px 0 0 10px;
   border-color: transparent transparent transparent #503d15;
 }
-body[dir=ltr] .teva-dropdown-link:not(.teva-dropdown-link-noindicator):after {
+body:not([dir=rtl]) .teva-dropdown-link:not(.teva-dropdown-link-noindicator):after {
   border-width: 0 0 10px 10px;
   border-color: transparent transparent #503d15 transparent;
 }
@@ -82,7 +82,7 @@ body[dir=ltr] .teva-dropdown-link:not(.teva-dropdown-link-noindicator):after {
 body[dir=rtl] .teva-dropdown-menu > li > .pull-far {
   left: 5px;
 }
-body[dir=ltr] .teva-dropdown-menu > li > .pull-far {
+body:not([dir=rtl]) .teva-dropdown-menu > li > .pull-far {
   right: 5px;
 }
 .teva-dropdown-menu > li > a {
@@ -102,9 +102,9 @@ body[dir=rtl] .teva-dropdown-menu > li > a:focus,
 body[dir=rtl] .teva-dropdown-menu > li > a:active {
   border-right: 3px solid black;
 }
-body[dir=ltr] .teva-dropdown-menu > li > a:hover,
-body[dir=ltr] .teva-dropdown-menu > li > a:focus,
-body[dir=ltr] .teva-dropdown-menu > li > a:active {
+body:not([dir=rtl]) .teva-dropdown-menu > li > a:hover,
+body:not([dir=rtl]) .teva-dropdown-menu > li > a:focus,
+body:not([dir=rtl]) .teva-dropdown-menu > li > a:active {
   border-left: 3px solid black;
 }
 body[dir=rtl] .teva-dropdown-menu > li > a:hover,
@@ -112,9 +112,9 @@ body[dir=rtl] .teva-dropdown-menu > li > a:focus,
 body[dir=rtl] .teva-dropdown-menu > li > a:active {
   padding-right: 2px;
 }
-body[dir=ltr] .teva-dropdown-menu > li > a:hover,
-body[dir=ltr] .teva-dropdown-menu > li > a:focus,
-body[dir=ltr] .teva-dropdown-menu > li > a:active {
+body:not([dir=rtl]) .teva-dropdown-menu > li > a:hover,
+body:not([dir=rtl]) .teva-dropdown-menu > li > a:focus,
+body:not([dir=rtl]) .teva-dropdown-menu > li > a:active {
   padding-left: 2px;
 }
 .teva-dropdown-menu.teva-dropdown-menu-dashboard {
@@ -142,7 +142,7 @@ body[dir=ltr] .teva-dropdown-menu > li > a:active {
 body[dir=rtl] .teva-dropdown-menu.teva-dropdown-menu-dashboard > li > a {
   padding-right: 11px;
 }
-body[dir=ltr] .teva-dropdown-menu.teva-dropdown-menu-dashboard > li > a {
+body:not([dir=rtl]) .teva-dropdown-menu.teva-dropdown-menu-dashboard > li > a {
   padding-left: 11px;
 }
 body[dir=rtl] .teva-dropdown-menu.teva-dropdown-menu-dashboard > li > a:hover,
@@ -150,9 +150,9 @@ body[dir=rtl] .teva-dropdown-menu.teva-dropdown-menu-dashboard > li > a:focus,
 body[dir=rtl] .teva-dropdown-menu.teva-dropdown-menu-dashboard > li > a:active {
   padding-right: 8px;
 }
-body[dir=ltr] .teva-dropdown-menu.teva-dropdown-menu-dashboard > li > a:hover,
-body[dir=ltr] .teva-dropdown-menu.teva-dropdown-menu-dashboard > li > a:focus,
-body[dir=ltr] .teva-dropdown-menu.teva-dropdown-menu-dashboard > li > a:active {
+body:not([dir=rtl]) .teva-dropdown-menu.teva-dropdown-menu-dashboard > li > a:hover,
+body:not([dir=rtl]) .teva-dropdown-menu.teva-dropdown-menu-dashboard > li > a:focus,
+body:not([dir=rtl]) .teva-dropdown-menu.teva-dropdown-menu-dashboard > li > a:active {
   padding-left: 8px;
 }
 body[dir=rtl] .teva-dropdown-menu.teva-dropdown-menu-dashboard > li > a:hover,
@@ -160,8 +160,8 @@ body[dir=rtl] .teva-dropdown-menu.teva-dropdown-menu-dashboard > li > a:focus,
 body[dir=rtl] .teva-dropdown-menu.teva-dropdown-menu-dashboard > li > a:active {
   border-right: 3px solid black;
 }
-body[dir=ltr] .teva-dropdown-menu.teva-dropdown-menu-dashboard > li > a:hover,
-body[dir=ltr] .teva-dropdown-menu.teva-dropdown-menu-dashboard > li > a:focus,
-body[dir=ltr] .teva-dropdown-menu.teva-dropdown-menu-dashboard > li > a:active {
+body:not([dir=rtl]) .teva-dropdown-menu.teva-dropdown-menu-dashboard > li > a:hover,
+body:not([dir=rtl]) .teva-dropdown-menu.teva-dropdown-menu-dashboard > li > a:focus,
+body:not([dir=rtl]) .teva-dropdown-menu.teva-dropdown-menu-dashboard > li > a:active {
   border-left: 3px solid black;
 }

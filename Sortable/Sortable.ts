@@ -40,6 +40,10 @@
                 if (e.which != 1)
                     return;
 
+                $(document).on("mouseup.sortable", function (e) {
+                    MouseUp();
+                    event.stopPropagation();
+                });
                 var Map = Sortable.GetMap(Options, Element);
 
                 MovedElement = $(this).parentsUntil(Element).last();//$(this).closest(Options.ItemSelector);
@@ -111,6 +115,7 @@
                 }
 
                 $(document).off("mousemove.sortable");
+                $(document).off("mouseup.sortable");
 
                 $(Dragged).css('z-index', Dragged_OriginalZIndex);
                 if (Options.OnChange != null && CurrentIndex != StartIndex)
@@ -120,12 +125,7 @@
                 Dragged = null;
             };
 
-            $(document).on("mouseup", function (e) {
-                MouseUp();
-                event.stopPropagation();
-            });
-
-            Element.on("mouseup", Options.HandleSelector, function () {
+            Element.on("mouseup.sortable", Options.HandleSelector, function () {
                 MouseUp();
             });
         }
