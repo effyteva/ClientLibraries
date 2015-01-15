@@ -104,7 +104,7 @@ module Teva {
                 if (Focus)
                     Instance.Label.focus();
             });
-            
+
             $(document).off("mousedown.SelectBox");
             $(window).off("resize.SelectBox");
         }
@@ -580,10 +580,8 @@ module Teva {
         }
         private ThrottleQuery(Term, PageIndex, LeadingResultsCount, Callback): void {
             var Instance = this;
-            if (Instance.Cache == null) {
+            if (Instance.Cache == null)
                 Instance.Cache = [];
-                Instance.Throttle = Object.create(requestThrottle);
-            }
             var CachedData = Instance.Cache[Term + "////" + PageIndex];
 
             if (CachedData) {
@@ -633,12 +631,33 @@ module Teva {
                 }
             }
 
-            Instance.Throttle.add(function () {
+            Instance.RequestThrottleAdd(function () {
                 Instance.QueryMethod(Term, PageIndex, function (Data) {
                     Instance.Cache[Term + "////" + PageIndex] = Data;
                     Callback(Data);
                 });
             });
+        }
+
+        private RequestThrottleNextRequest;
+        private RequestThrottlePending;
+        private RequestThrottleDelay = 250; // Delay in MS
+        private RequestThrottleAdd(NewRequest) {
+            var Instance = this;
+            Instance.RequestThrottleNextRequest = NewRequest;
+            if (Instance.RequestThrottlePending)
+                return;
+
+            Instance.RequestThrottlePending = true;
+            setTimeout(function () {
+                Instance.RequestThrottleDoRequest();
+            }, Instance.RequestThrottleDelay);
+        }
+        private RequestThrottleDoRequest() {
+            var Action = this.RequestThrottleNextRequest;
+            this.RequestThrottleNextRequest = null;
+            this.RequestThrottlePending = false;
+            Action();
         }
 
         public Input;
@@ -662,6 +681,5 @@ module Teva {
         private Options: SelectBoxOptions;
         private QueryMethod: SelectBoxQueryInterface;
         private Cache;
-        private Throttle;
     }
 }

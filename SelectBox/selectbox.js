@@ -3,6 +3,7 @@ var Teva;
 (function (Teva) {
     var SelectBox = (function () {
         function SelectBox(Input, Options) {
+            this.RequestThrottleDelay = 250; // Delay in MS
             var Instance = this;
             Input.data("SelectBox", this);
             Instance.Input = Input;
@@ -463,10 +464,8 @@ var Teva;
         };
         SelectBox.prototype.ThrottleQuery = function (Term, PageIndex, LeadingResultsCount, Callback) {
             var Instance = this;
-            if (Instance.Cache == null) {
+            if (Instance.Cache == null)
                 Instance.Cache = [];
-                Instance.Throttle = Object.create(requestThrottle);
-            }
             var CachedData = Instance.Cache[Term + "////" + PageIndex];
             if (CachedData) {
                 Callback(CachedData);
@@ -511,12 +510,28 @@ var Teva;
                     }
                 }
             }
-            Instance.Throttle.add(function () {
+            Instance.RequestThrottleAdd(function () {
                 Instance.QueryMethod(Term, PageIndex, function (Data) {
                     Instance.Cache[Term + "////" + PageIndex] = Data;
                     Callback(Data);
                 });
             });
+        };
+        SelectBox.prototype.RequestThrottleAdd = function (NewRequest) {
+            var Instance = this;
+            Instance.RequestThrottleNextRequest = NewRequest;
+            if (Instance.RequestThrottlePending)
+                return;
+            Instance.RequestThrottlePending = true;
+            setTimeout(function () {
+                Instance.RequestThrottleDoRequest();
+            }, Instance.RequestThrottleDelay);
+        };
+        SelectBox.prototype.RequestThrottleDoRequest = function () {
+            var Action = this.RequestThrottleNextRequest;
+            this.RequestThrottleNextRequest = null;
+            this.RequestThrottlePending = false;
+            Action();
         };
         return SelectBox;
     })();
