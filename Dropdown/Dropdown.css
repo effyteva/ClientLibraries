@@ -89,6 +89,7 @@ body:not([dir=rtl]) .teva-dropdown-menu > li > .pull-far {
   padding: 3px 5px;
   color: #503d15;
   display: block;
+  text-decoration: none;
 }
 .teva-dropdown-menu > li > a:hover,
 .teva-dropdown-menu > li > a:focus,
