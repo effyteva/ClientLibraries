@@ -1,0 +1,177 @@
+﻿@import "../Variables.less";
+@import "../Colors.less";
+@import "../Functions.less";
+
+.teva-selectbox {
+    display: inline-block;
+    width: 220px;
+
+    &.teva-selectbox-arrows {
+        &.teva-selectbox-open {
+            .teva-selectbox-label {
+                border-color: @color-inputs-border-focus;
+
+                &:after {
+                    content: "\e81e" !important;
+                }
+            }
+        }
+
+        .teva-selectbox-label {
+            .padding-far(28px);
+
+            &:after {
+                font-size: 2em;
+                font-family: "fontello";
+                content: "\e81f";
+                position: absolute;
+                .position-far(8px);
+                line-height: 40px;
+                top: 0;
+            }
+        }
+    }
+
+    &-disabled {
+        cursor: not-allowed;
+
+        > a {
+            pointer-events: none;
+        }
+    }
+
+    &-label {
+        border: 1px solid @color-inputs-border;
+        display: block;
+        height: 40px;
+        line-height: 38px;
+        cursor: pointer;
+        position: relative;
+        padding-left: 8px;
+        padding-right: 8px;
+        background-color: white;
+
+        &-text {
+            height: 38px;
+            overflow: hidden;
+        }
+
+        &:hover,
+        &:active,
+        &:focus {
+            text-decoration: none;
+            border-color: @color-inputs-border-focus;
+        }
+    }
+
+    &-search {
+        display: none;
+        position: absolute;
+        z-index: 10000;
+        width: 220px;
+        box-shadow: 0 0 20px 0 rgba(0,0,0,0.2);
+
+        &.teva-selectbox-search-inline {
+            .teva-selectbox-search-terms {
+                border-top: 1px solid @color-inputs-border-focus;
+            }
+        }
+
+        &.teva-selectbox-search-icon {
+            .teva-selectbox-search-terms {
+                .padding-far(32px);
+
+                &:after {
+                    font-size: 1em;
+                    font-family: "fontello";
+                    content: "\e86a";
+                    position: absolute;
+                    .position-far(8px);
+                    top: 8px;
+                    color: @color-inputs-border;
+                }
+            }
+        }
+
+        &.teva-selectbox-search-loading {
+            .teva-selectbox-search-terms {
+                &:after {
+                    font-size: 1em;
+                    font-family: "fontello";
+                    content: "\E833";
+                    position: absolute;
+                    .position-far(8px);
+                    top: 8px;
+                    color: @color-inputs-border;
+                    .animate-spin();
+                }
+            }
+        }
+
+        &-terms {
+            border: 1px solid @color-inputs-border-focus;
+            border-top: none;
+            display: block;
+            height: 40px;
+            position: relative;
+            background-color: white;
+            padding-left: 8px;
+            padding-right: 8px;
+
+            &-input {
+                width: 100%;
+                height: 100%;
+                border: 0;
+                outline: 0;
+            }
+        }
+
+        &-terms + &-results {
+            border-top: none;
+        }
+
+        &-results {
+            border: 1px solid @color-inputs-border-focus;
+            display: block;
+            max-height: 200px;
+            overflow-y: auto;
+            background-color: white;
+            position: relative;
+            .noselect();
+
+            &-searching,
+            &-empty,
+            &-minimum {
+                padding: 8px;
+                line-height: 24px;
+                height: 40px;
+                display: none;
+                cursor: default;
+            }
+
+            &-result {
+                padding: 10px;
+                overflow: hidden;
+                cursor: pointer;
+
+                &-active {
+                    background-color: #BBB;
+                }
+
+                &-disabled {
+                    background-color: #EEE;
+                    pointer-events: none;
+                }
+
+                &-parent {
+                    font-weight: bold;
+                    pointer-events: none;
+                }
+
+                &:hover {
+                    background-color: #DDD;
+                }
+            }
+        }
+    }
+}

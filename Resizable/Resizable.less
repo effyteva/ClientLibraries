@@ -1,0 +1,37 @@
+﻿@import "../Variables.less";
+@import "../Colors.less";
+@import "../Functions.less";
+
+.teva-resizable {
+    &-resizer {
+        width: 0px;
+        height: 0px;
+        border-style: solid;
+        position: absolute;
+        .position-far();
+        bottom: 0;
+        z-index: 1;
+
+        body[dir=rtl] & {
+            border-width: 10px 0 0 10px;
+            border-color: transparent transparent transparent @color-text;
+            cursor: sw-resize !important;
+        }
+
+        body[dir=ltr] & {
+            border-width: 0 0 10px 10px;
+            border-color: transparent transparent @color-text transparent;
+            cursor: se-resize !important;
+        }
+    }
+
+    &-cursor {
+        body[dir=rtl] & {
+            cursor: sw-resize !important;
+        }
+
+        body[dir=ltr] & {
+            cursor: se-resize !important;
+        }
+    }
+}

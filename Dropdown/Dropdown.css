@@ -1,0 +1,167 @@
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);-o-transform: rotate(0deg);-webkit-transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);-o-transform: rotate(360deg);-webkit-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  0% {
+    transform: rotate(0deg);-o-transform: rotate(0deg);-webkit-transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);-o-transform: rotate(360deg);-webkit-transform: rotate(360deg);
+  }
+}
+.teva-dropdown {
+  position: relative;
+}
+.teva-dropdown-link:active,
+.teva-dropdown-link:focus {
+  outline: 1px solid #dfc285;
+}
+.teva-dropdown-link:not(.teva-dropdown-link-noindicator):after {
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  position: absolute;
+  bottom: 0;
+  content: "";
+}
+body[dir=rtl] .teva-dropdown-link:not(.teva-dropdown-link-noindicator):after {
+  left: 0;
+}
+body[dir=ltr] .teva-dropdown-link:not(.teva-dropdown-link-noindicator):after {
+  right: 0;
+}
+body[dir=rtl] .teva-dropdown-link:not(.teva-dropdown-link-noindicator):after {
+  border-width: 10px 0 0 10px;
+  border-color: transparent transparent transparent #503d15;
+}
+body[dir=ltr] .teva-dropdown-link:not(.teva-dropdown-link-noindicator):after {
+  border-width: 0 0 10px 10px;
+  border-color: transparent transparent #503d15 transparent;
+}
+.teva-dropdown-menu {
+  display: none;
+  position: absolute;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  border: none;
+  background-color: white;
+  list-style: none;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  z-index: 10000;
+}
+.teva-dropdown-menu > li {
+  position: relative;
+}
+.teva-dropdown-menu > li.disabled > a,
+.teva-dropdown-menu > li.disabled > a:hover,
+.teva-dropdown-menu > li.disabled > a:focus {
+  color: #a89e8a;
+  background-color: transparent;
+  cursor: not-allowed;
+}
+.teva-dropdown-menu > li.teva-dropdown-divider {
+  height: 1px;
+  margin: 9px 0;
+  overflow: hidden;
+  background-color: #e5e5e5;
+}
+.teva-dropdown-menu > li > .pull-far {
+  float: none;
+  top: 0;
+  position: absolute;
+}
+body[dir=rtl] .teva-dropdown-menu > li > .pull-far {
+  left: 5px;
+}
+body[dir=ltr] .teva-dropdown-menu > li > .pull-far {
+  right: 5px;
+}
+.teva-dropdown-menu > li > a {
+  padding: 3px 5px;
+  color: #503d15;
+  display: block;
+}
+.teva-dropdown-menu > li > a:hover,
+.teva-dropdown-menu > li > a:focus,
+.teva-dropdown-menu > li > a:active {
+  text-decoration: none;
+  color: #262626;
+  background-color: #eeeeee;
+}
+body[dir=rtl] .teva-dropdown-menu > li > a:hover,
+body[dir=rtl] .teva-dropdown-menu > li > a:focus,
+body[dir=rtl] .teva-dropdown-menu > li > a:active {
+  border-right: 3px solid black;
+}
+body[dir=ltr] .teva-dropdown-menu > li > a:hover,
+body[dir=ltr] .teva-dropdown-menu > li > a:focus,
+body[dir=ltr] .teva-dropdown-menu > li > a:active {
+  border-left: 3px solid black;
+}
+body[dir=rtl] .teva-dropdown-menu > li > a:hover,
+body[dir=rtl] .teva-dropdown-menu > li > a:focus,
+body[dir=rtl] .teva-dropdown-menu > li > a:active {
+  padding-right: 2px;
+}
+body[dir=ltr] .teva-dropdown-menu > li > a:hover,
+body[dir=ltr] .teva-dropdown-menu > li > a:focus,
+body[dir=ltr] .teva-dropdown-menu > li > a:active {
+  padding-left: 2px;
+}
+.teva-dropdown-menu.teva-dropdown-menu-dashboard {
+  width: 240px;
+  border: none !important;
+  padding: 0;
+  margin: 0;
+  border-radius: 0px;
+}
+.teva-dropdown-menu.teva-dropdown-menu-dashboard > li {
+  height: 40px;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  line-height: 40px;
+  border-bottom: solid 1px #efefef;
+}
+.teva-dropdown-menu.teva-dropdown-menu-dashboard > li > a {
+  line-height: 40px;
+  padding: 0;
+  margin: 0;
+  height: 40px;
+  color: #503d15;
+}
+body[dir=rtl] .teva-dropdown-menu.teva-dropdown-menu-dashboard > li > a {
+  padding-right: 11px;
+}
+body[dir=ltr] .teva-dropdown-menu.teva-dropdown-menu-dashboard > li > a {
+  padding-left: 11px;
+}
+body[dir=rtl] .teva-dropdown-menu.teva-dropdown-menu-dashboard > li > a:hover,
+body[dir=rtl] .teva-dropdown-menu.teva-dropdown-menu-dashboard > li > a:focus,
+body[dir=rtl] .teva-dropdown-menu.teva-dropdown-menu-dashboard > li > a:active {
+  padding-right: 8px;
+}
+body[dir=ltr] .teva-dropdown-menu.teva-dropdown-menu-dashboard > li > a:hover,
+body[dir=ltr] .teva-dropdown-menu.teva-dropdown-menu-dashboard > li > a:focus,
+body[dir=ltr] .teva-dropdown-menu.teva-dropdown-menu-dashboard > li > a:active {
+  padding-left: 8px;
+}
+body[dir=rtl] .teva-dropdown-menu.teva-dropdown-menu-dashboard > li > a:hover,
+body[dir=rtl] .teva-dropdown-menu.teva-dropdown-menu-dashboard > li > a:focus,
+body[dir=rtl] .teva-dropdown-menu.teva-dropdown-menu-dashboard > li > a:active {
+  border-right: 3px solid black;
+}
+body[dir=ltr] .teva-dropdown-menu.teva-dropdown-menu-dashboard > li > a:hover,
+body[dir=ltr] .teva-dropdown-menu.teva-dropdown-menu-dashboard > li > a:focus,
+body[dir=ltr] .teva-dropdown-menu.teva-dropdown-menu-dashboard > li > a:active {
+  border-left: 3px solid black;
+}

@@ -1,0 +1,130 @@
+﻿@import "../Variables.less";
+@import "../Colors.less";
+@import "../Functions.less";
+
+.teva-dropdown {
+    position: relative;
+
+    &-link {
+
+        &:active,
+        &:focus {
+            outline: 1px solid lighten(@color-text, 50%);
+        }
+
+        &:not(.teva-dropdown-link-noindicator) {
+            &:after {
+                width: 0px;
+                height: 0px;
+                border-style: solid;
+                position: absolute;
+                .position-far();
+                bottom: 0;
+                content: "";
+
+                body[dir=rtl] & {
+                    border-width: 10px 0 0 10px;
+                    border-color: transparent transparent transparent @color-text;
+                }
+
+                body[dir=ltr] & {
+                    border-width: 0 0 10px 10px;
+                    border-color: transparent transparent @color-text transparent;
+                }
+            }
+        }
+    }
+
+    &-menu {
+        display: none;
+        position: absolute;
+        margin: 0;
+        border-radius: 0;
+        box-shadow: 0 0 20px 0 rgba(0,0,0,0.2);
+        border: none;
+        background-color: white;
+        list-style: none;
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        z-index: 10000;
+
+        > li {
+            position: relative;
+
+            &.disabled {
+                > a,
+                > a:hover,
+                > a:focus {
+                    color: mix(@color-text, white, 50%);
+                    background-color: transparent;
+                    cursor: not-allowed;
+                }
+            }
+
+            &.teva-dropdown-divider {
+                height: 1px;
+                margin: 9px 0;
+                overflow: hidden;
+                background-color: #e5e5e5;
+            }
+
+            > .pull-far {
+                float: none;
+                top: 0;
+                position: absolute;
+                .position-far(5px);
+            }
+
+            > a {
+                padding: 3px 5px;
+                color: @color-text;
+                display: block;
+
+                &:hover,
+                &:focus,
+                &:active {
+                    text-decoration: none;
+                    color: #262626;
+                    background-color: #EEEEEE;
+                    .border-near(3px solid black);
+                    .padding-near(2px);
+                }
+            }
+        }
+
+        &.teva-dropdown-menu-dashboard {
+            width: @tom-button-ui-dashboard-width;
+            border: none !important;
+            padding: 0;
+            margin: 0;
+            border-radius: 0px;
+
+            > li {
+                height: @tom-button-ui-dashboard-height;
+                padding: 0;
+                margin: 0;
+                font-size: 14px;
+                line-height: @tom-button-ui-dashboard-height;
+                border-bottom: solid 1px #efefef;
+
+                > a {
+                    line-height: @tom-button-ui-dashboard-height;
+                    padding: 0;
+                    margin: 0;
+                    height: @tom-button-ui-dashboard-height;
+                    color: @color-text;
+                    .padding-near(11px);
+
+                    &:hover,
+                    &:focus,
+                    &:active {
+                        .padding-near(8px);
+                        .border-near(3px solid black);
+                    }
+                }
+            }
+        }
+    }
+}
