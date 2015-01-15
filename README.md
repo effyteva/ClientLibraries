@@ -11,18 +11,23 @@ Also, all modules support both LTR (Left-to-right) and RTL (Right-to-left) layou
 In summary, the modules I publish for now are:
 * Moveable - Similar to Gridster and jQuery UI draggable.
 This module allows any elements in a container to move, without overlapping if needed.
+See sample at: https://cdn.rawgit.com/effyteva/ClientLibraries/master/Moveable/Moveable.htm
 
 * Resizable - Similar to Grid (Resizable feature) and jQuery UI resizable.
 This module allows any element to be resized, again, without overlapping if needed.
 Combining Moveable and Resizable allowed a full switch from using Gridster on my project.
+See sample at: https://cdn.rawgit.com/effyteva/ClientLibraries/master/Resizable/Resizable.htm
 
 * Sortable - Similiar to jQuery UI sortable.
 This module allows easily sorting (drag and drop) table rows, or any other element, using a defined handle.
+See sample at: https://cdn.rawgit.com/effyteva/ClientLibraries/master/Sortable/Sortable.htm
 
 * Dropdown - Similar to Bootstrap's dropdown feature, with some improvements, such as fading menus and RTL support.
+See sample at: https://cdn.rawgit.com/effyteva/ClientLibraries/master/Dropdown/Dropdown.htm
 
 * SelectBox - Similar to Select2.
 This library replaces any INPUT or SELECT form element, and converts into a full dropdown, with support for AJAX queries, results paging, automatic caching, in place editing, and many other features
+See sample at: https://cdn.rawgit.com/effyteva/ClientLibraries/master/SelectBox/SelectBox.htm
 
 * Storage - Small library for managing storage on the browser, using either Cookies or LocalStorage.
 
