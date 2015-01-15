@@ -24,7 +24,6 @@ This module allows easily sorting (drag and drop) table rows, or any other eleme
 * SelectBox - Similar to Select2.
 This library replaces any INPUT or SELECT form element, and converts into a full dropdown, with support for AJAX queries, results paging, automatic caching, in place editing, and many other features
 
-* Storage
-Small library for managing storage on the browser, using either Cookies or LocalStorage.
+* Storage - Small library for managing storage on the browser, using either Cookies or LocalStorage.
 
 Technically, all libraries are written using TypeScript and LESS, I'm publishing both TS/JS and LESS/CSS versions of all libraries.
