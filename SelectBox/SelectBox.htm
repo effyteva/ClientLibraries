@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+    <link href="https://cdn.rawgit.com/effyteva/ClientLibraries/master/SelectBox/SelectBox.css" rel="stylesheet" />
+    <link href="https://cdn.rawgit.com/effyteva/ClientLibraries/master/Shared/fontello.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="https://cdn.rawgit.com/effyteva/ClientLibraries/master/SelectBox/selectbox.js"></script>
+</head>
+<body>
+    <select>
+        <option>Value 1</option>
+        <option>Value 2</option>
+        <optgroup label="Group1">
+            <option>Value 3</option>
+            <option>Value 4</option>
+        </optgroup>
+    </select>
+
+    <input type="hidden" id="CustomerID">
+    <script>
+        $(function () {
+            Teva.SelectBox.Enable($("select"), {
+                AllowSearch: false
+            });
+            Teva.SelectBox.Enable($("#CustomerID"), {
+                Query: function (Terms, PageIndex, Callback) {
+                    var Results = new Array();
+                    Results.push({ id: 1, text: "a" });
+                    Results.push({ id: 2, text: "b" });
+                    Results.push({ id: 3, text: "c" });
+                    Callback({ results: Results });
+                },
+                OnChange: function (ID, Text) {
+                    alert("Value changed to " + Text + " (" + ID + ")");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+
+    <script src="https://cdn.rawgit.com/effyteva/ClientLibraries/master/Sortable/Sortable.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+</head>
+<body>
+    <table>
+        <tbody>
+            <tr><td><div class="handle">Handle</div></td><td>Item 1</td></tr>
+            <tr><td><div class="handle">Handle</div></td><td>Item 2</td></tr>
+            <tr><td><div class="handle">Handle</div></td><td>Item 3</td></tr>
+            <tr><td><div class="handle">Handle</div></td><td>Item 4</td></tr>
+        </tbody>
+    </table>
+
+    <style>
+        .handle {
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        $(function () {
+            Teva.Sortable.Enable($("tbody"), {
+                HandleSelector: ".handle",
+                OnChange: function () {
+                    alert("Sortable changed...");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
