@@ -27,7 +27,7 @@ See sample at: https://cdn.rawgit.com/effyteva/ClientLibraries/13a1fc6d4823610a8
 
 * SelectBox - Similar to Select2.
 This library replaces any INPUT or SELECT form element, and converts into a full dropdown, with support for AJAX queries, results paging, automatic caching, in place editing, and many other features
-See sample at: https://cdn.rawgit.com/effyteva/ClientLibraries/13a1fc6d4823610a847de814fc72f9eca9401100/SelectBox/SelectBox.htm
+See sample at: https://cdn.rawgit.com/effyteva/ClientLibraries/5d43d13d8a5620d4fb942a72c6710d8aceeabf62/SelectBox/SelectBox.htm
 
 * Storage - Small library for managing storage on the browser, using either Cookies or LocalStorage.
 
