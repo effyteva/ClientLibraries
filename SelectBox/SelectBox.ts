@@ -10,6 +10,7 @@ module Teva {
         Enabled?: boolean;
         EnableCaching?: boolean;
         EnableCachingPartialReduce?: boolean;
+        EnableThrottle?: boolean;
         FormatResultItem?: any;
         MinimumLength?: number;
         ShowArrows?: boolean;
@@ -56,6 +57,7 @@ module Teva {
                 Enabled: true,
                 EnableCaching: true,
                 EnableCachingPartialReduce: true,
+                EnableThrottle: true,
                 FormatResultItem: null,
                 MinimumLength: null,
                 ShowArrows: true,
@@ -472,8 +474,10 @@ module Teva {
             Result.addClass("teva-selectbox-search-results-result-active");
             Instance.FocusOnActiveResult();
         }
-        private RefreshResultsData(Terms, Data) {
+        private RefreshResultsData(Terms, PageIndex, Data) {
             var Instance = this;
+            if (PageIndex == 0)
+                $(".teva-selectbox-search-results-result", Instance.SearchResults).remove();
             Instance.SearchResultsEmpty.toggle(Data.results.length == 0);
             if (Instance.Options.AllowClear) {
                 Instance.SearchResultsRemove = $("<div>")
@@ -501,6 +505,7 @@ module Teva {
         }
         private EnableScroll() {
             var Instance = this;
+            Instance.SearchResults.off("scroll.SelectBox");
             Instance.SearchResults.on("scroll.SelectBox", function () {
                 var CurrentScroll = Instance.SearchResults.scrollTop();
                 var MaximumScroll = Instance.SearchResults[0].scrollHeight - Instance.SearchResults.outerHeight();
@@ -526,6 +531,9 @@ module Teva {
             if (Instance.Options.AllowClear && Instance.SearchResultsRemove != null)
                 Instance.SearchResultsRemove.toggle(Terms == "" && Instance.Input.val() != "");
 
+            if (Instance.NextRequestTerms == Terms)
+                return;
+
             if (Instance.VisibleTerms == Terms) {
                 Instance.FocusByInput();
                 return;
@@ -549,94 +557,93 @@ module Teva {
         private LoadResults(Terms, PageIndex) {
             var Instance = this;
             Instance.ShowLoading(PageIndex);
-            if (Instance.Options.EnableCaching) {
-                Instance.ThrottleQuery(Terms, PageIndex, 0, function (Data) {
-                    if (Data.more)
-                        Instance.EnableScroll();
-                    else
-                        Instance.DisableScroll();
-                    Instance.RefreshResultsData(Terms, Data);
-                    Instance.VisiblePageIndex = PageIndex;
-                    Instance.VisibleTerms = Terms;
-                    Instance.HideLoading();
-                    if (PageIndex == 0)
-                        Instance.FocusByInput();
-                });
-            }
-            else {
-                Instance.QueryMethod(Terms, PageIndex, function (Data) {
-                    if (Data.more)
-                        Instance.EnableScroll();
-                    else
-                        Instance.DisableScroll();
-                    Instance.RefreshResultsData(Terms, Data);
-                    Instance.VisiblePageIndex = PageIndex;
-                    Instance.VisibleTerms = Terms;
-                    Instance.HideLoading();
-                    if (PageIndex == 0)
-                        Instance.FocusByInput();
-                });
-            }
+            Instance.NextRequestTerms = Terms;
+            Instance.ThrottleQuery(Terms, PageIndex, 0, function (Data, LoadedTerms, LoadedPageIndex) {
+                if (Data.more)
+                    Instance.EnableScroll();
+                else
+                    Instance.DisableScroll();
+                Instance.RefreshResultsData(LoadedTerms, LoadedPageIndex, Data);
+                Instance.VisiblePageIndex = PageIndex;
+                Instance.VisibleTerms = LoadedTerms;
+                Instance.HideLoading();
+                if (PageIndex == 0)
+                    Instance.FocusByInput();
+            });
         }
-        private ThrottleQuery(Term, PageIndex, LeadingResultsCount, Callback): void {
+        private ThrottleQuery(Terms, PageIndex, LeadingResultsCount, Callback): void {
             var Instance = this;
-            if (Instance.Cache == null)
-                Instance.Cache = [];
-            var CachedData = Instance.Cache[Term + "////" + PageIndex];
 
-            if (CachedData) {
-                Callback(CachedData);
-                return;
-            }
+            if (Instance.Options.EnableCaching) {
+                if (Instance.Cache == null)
+                    Instance.Cache = [];
+                var CachedData = Instance.Cache[Terms + "////" + PageIndex];
 
-            if (Instance.Options.EnableCachingPartialReduce) {
-                var PartialTerm = Term;
-                while (PartialTerm.length > 0) {
-                    PartialTerm = PartialTerm.substring(0, PartialTerm.length - 1);
-                    CachedData = Instance.Cache[PartialTerm + "////" + PageIndex];
-                    if (CachedData) {
-                        if (CachedData.more == true)
-                            break;
+                if (CachedData) {
+                    Callback(CachedData, Terms, PageIndex);
+                    return;
+                }
 
-                        var ToReturn = {
-                            more: false,
-                            results: []
-                        };
-                        for (var i = 0; i < CachedData.results.length; i++) {
-                            var Result = CachedData.results[i];
-                            if (Result.children != null && Result.children.length > 0) {
-                                var FilteredChildren = [];
-                                for (var j = 0; j < Result.children.length; j++) {
-                                    var Child = Result.children[j];
-                                    if (!Child.disabled && Child.text.toLowerCase().indexOf(Term.toLowerCase()) != -1)
-                                        FilteredChildren.push(Child);
+                if (Instance.Options.EnableCachingPartialReduce) {
+                    var PartialTerm = Terms;
+                    while (PartialTerm.length > 0) {
+                        PartialTerm = PartialTerm.substring(0, PartialTerm.length - 1);
+                        CachedData = Instance.Cache[PartialTerm + "////" + PageIndex];
+                        if (CachedData) {
+                            if (CachedData.more == true)
+                                break;
+
+                            var ToReturn = {
+                                more: false,
+                                results: []
+                            };
+                            for (var i = 0; i < CachedData.results.length; i++) {
+                                var Result = CachedData.results[i];
+                                if (Result.children != null && Result.children.length > 0) {
+                                    var FilteredChildren = [];
+                                    for (var j = 0; j < Result.children.length; j++) {
+                                        var Child = Result.children[j];
+                                        if (!Child.disabled && Child.text.toLowerCase().indexOf(Terms.toLowerCase()) != -1)
+                                            FilteredChildren.push(Child);
+                                    }
+                                    if (FilteredChildren.length > 0) {
+                                        ToReturn.results.push({
+                                            text: Result.text,
+                                            cssClass: Result.cssClass,
+                                            children: FilteredChildren
+                                        });
+                                    }
                                 }
-                                if (FilteredChildren.length > 0) {
-                                    ToReturn.results.push({
-                                        text: Result.text,
-                                        cssClass: Result.cssClass,
-                                        children: FilteredChildren
-                                    });
+                                else {
+                                    if (i < LeadingResultsCount || Result.text.toLowerCase().indexOf(Terms.toLowerCase()) != -1)
+                                        ToReturn.results.push(Result);
                                 }
                             }
-                            else {
-                                if (i < LeadingResultsCount || Result.text.toLowerCase().indexOf(Term.toLowerCase()) != -1)
-                                    ToReturn.results.push(Result);
-                            }
+
+                            Callback(ToReturn, Terms, PageIndex);
+                            return;
                         }
-
-                        Callback(ToReturn);
-                        return;
                     }
                 }
             }
 
-            Instance.RequestThrottleAdd(function () {
-                Instance.QueryMethod(Term, PageIndex, function (Data) {
-                    Instance.Cache[Term + "////" + PageIndex] = Data;
-                    Callback(Data);
+            if (PageIndex == 0 && Instance.Options.EnableThrottle) {
+                Instance.RequestThrottleAdd(function () {
+                    var TermsToLoad = Instance.NextRequestTerms;
+                    Instance.QueryMethod(TermsToLoad, PageIndex, function (Data) {
+                        if (Instance.Options.EnableCaching)
+                            Instance.Cache[TermsToLoad + "////" + PageIndex] = Data;
+                        Callback(Data, TermsToLoad, PageIndex);
+                    });
                 });
-            });
+            }
+            else {
+                Instance.QueryMethod(Terms, PageIndex, function (Data) {
+                    if (Instance.Options.EnableCaching)
+                        Instance.Cache[Terms + "////" + PageIndex] = Data;
+                    Callback(Data, Terms, PageIndex);
+                });
+            }
         }
 
         private RequestThrottleNextRequest;
@@ -650,15 +657,14 @@ module Teva {
 
             Instance.RequestThrottlePending = true;
             setTimeout(function () {
-                Instance.RequestThrottleDoRequest();
+
+                var Action = Instance.RequestThrottleNextRequest;
+                Instance.RequestThrottleNextRequest = null;
+                Instance.RequestThrottlePending = false;
+                Action();
             }, Instance.RequestThrottleDelay);
         }
-        private RequestThrottleDoRequest() {
-            var Action = this.RequestThrottleNextRequest;
-            this.RequestThrottleNextRequest = null;
-            this.RequestThrottlePending = false;
-            Action();
-        }
+        private NextRequestTerms: string;
 
         public Input;
         public Container;
