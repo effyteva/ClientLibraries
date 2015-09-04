@@ -31,4 +31,10 @@ See sample at: https://cdn.rawgit.com/effyteva/ClientLibraries/5d43d13d8a5620d4f
 
 * Storage - Small library for managing storage on the browser, using either Cookies or LocalStorage.
 
+* DatePicker
+This module contains a user interface for quick date picking, with support for easy picking on mobile devices, using full-screen layout.
+Date picker has 4 modes: date picker, date+time picker, month+year picker, time picker.
+Also, the date picker supports multiple languages, and is currently translated to English and Hebrew.
+Feel free to send me localizations for additional languages and those will be added.
+
 Technically, all libraries are written using TypeScript and LESS, I'm publishing both TS/JS and LESS/CSS versions of all libraries.
