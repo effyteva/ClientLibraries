@@ -10,7 +10,6 @@
     -o-user-select: none;
     user-select: none;
     z-index: 9999;
-    font-family: Arial;
 
     &, & * {
         box-sizing: border-box;
@@ -19,7 +18,6 @@
     &-mobile {
         position: fixed !important;
         top: 0 !important;
-        right: 0 !important;
         width: 100%;
         height: 100%;
         overflow: scroll;
@@ -29,6 +27,14 @@
         align-items: center;
         align-content: center;
         box-shadow: none;
+
+        body[dir=rtl] & {
+            right: 0 !important;
+        }
+
+        body:not([dir=rtl]) & {
+            left: 0 !important;
+        }
 
         .teva-datepicker {
             &-date,

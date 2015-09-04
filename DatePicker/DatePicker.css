@@ -1,247 +1,299 @@
 .teva-datepicker {
-    position: absolute;
-    width: 262px;
-    padding: 5px;
-    box-shadow: 0 0 20px 0 rgba(0,0,0,0.2);
-    background-color: white;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -o-user-select: none;
-    user-select: none;
-    z-index: 9999;
-    font-family: Arial;
+  position: absolute;
+  width: 262px;
+  padding: 5px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  background-color: white;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  z-index: 9999;
 }
-
-    .teva-datepicker, .teva-datepicker * {
-        box-sizing: border-box;
-    }
-
+.teva-datepicker,
+.teva-datepicker * {
+  box-sizing: border-box;
+}
 .teva-datepicker-mobile {
-    position: fixed !important;
-    top: 0 !important;
-    right: 0 !important;
-    width: 100%;
-    height: 100%;
-    overflow: scroll;
-    background-color: rgba(0,0,0,0.5);
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    align-content: center;
-    box-shadow: none;
+  position: fixed !important;
+  top: 0 !important;
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  box-shadow: none;
 }
-
-    .teva-datepicker-mobile .teva-datepicker-date, .teva-datepicker-mobile .teva-datepicker-month, .teva-datepicker-mobile .teva-datepicker-year, .teva-datepicker-mobile .teva-datepicker-time {
-        margin-left: auto;
-        margin-right: auto;
-        box-shadow: 0 0 20px 0 rgba(0,0,0,0.2);
-    }
-
-.teva-datepicker-date, .teva-datepicker-month, .teva-datepicker-year, .teva-datepicker-time {
-    width: 252px;
-    background-color: white;
+body[dir=rtl] .teva-datepicker-mobile {
+  right: 0 !important;
 }
-
-.teva-datepicker-date-header, .teva-datepicker-month-header, .teva-datepicker-year-header, .teva-datepicker-time-header {
-    text-align: center;
-    font-size: 2em;
-    border-bottom: 1px solid black;
-    margin-bottom: 5px;
+body:not([dir=rtl]) .teva-datepicker-mobile {
+  left: 0 !important;
 }
-
-.teva-datepicker-date-menu, .teva-datepicker-month-menu, .teva-datepicker-year-menu, .teva-datepicker-time-menu {
-    text-align: center;
-    font-size: 1.5em;
-    margin-bottom: 6px;
+.teva-datepicker-mobile .teva-datepicker-date,
+.teva-datepicker-mobile .teva-datepicker-month,
+.teva-datepicker-mobile .teva-datepicker-year,
+.teva-datepicker-mobile .teva-datepicker-time {
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
 }
-
-.teva-datepicker-date-menu-previous:before, .teva-datepicker-month-menu-previous:before, .teva-datepicker-year-menu-previous:before, .teva-datepicker-time-menu-previous:before {
-    content: '<';
+.teva-datepicker-date,
+.teva-datepicker-month,
+.teva-datepicker-year,
+.teva-datepicker-time {
+  width: 252px;
+  background-color: white;
 }
-
-.teva-datepicker-date-menu-next:before, .teva-datepicker-month-menu-next:before, .teva-datepicker-year-menu-next:before, .teva-datepicker-time-menu-next:before {
-    content: '>';
+.teva-datepicker-date-header,
+.teva-datepicker-month-header,
+.teva-datepicker-year-header,
+.teva-datepicker-time-header {
+  text-align: center;
+  font-size: 2em;
+  border-bottom: 1px solid black;
+  margin-bottom: 5px;
 }
-
-.teva-datepicker-date-menu-header, .teva-datepicker-month-menu-header, .teva-datepicker-year-menu-header, .teva-datepicker-time-menu-header {
-    width: 176px;
-    direction: ltr;
-    text-decoration: underline;
+.teva-datepicker-date-menu,
+.teva-datepicker-month-menu,
+.teva-datepicker-year-menu,
+.teva-datepicker-time-menu {
+  text-align: center;
+  font-size: 1.5em;
+  margin-bottom: 6px;
 }
-
-.teva-datepicker-date-menu-header, .teva-datepicker-month-menu-header, .teva-datepicker-year-menu-header, .teva-datepicker-time-menu-header {
-    display: inline-block;
+.teva-datepicker-date-menu-previous:before,
+.teva-datepicker-month-menu-previous:before,
+.teva-datepicker-year-menu-previous:before,
+.teva-datepicker-time-menu-previous:before {
+  content: '<';
 }
-
-.teva-datepicker-date-menu-previous, .teva-datepicker-month-menu-previous, .teva-datepicker-year-menu-previous, .teva-datepicker-time-menu-previous, .teva-datepicker-date-menu-next, .teva-datepicker-month-menu-next, .teva-datepicker-year-menu-next, .teva-datepicker-time-menu-next {
-    cursor: pointer;
-    display: inline-block;
-    font-weight: bold;
+.teva-datepicker-date-menu-next:before,
+.teva-datepicker-month-menu-next:before,
+.teva-datepicker-year-menu-next:before,
+.teva-datepicker-time-menu-next:before {
+  content: '>';
 }
-
-    .teva-datepicker-date-menu-previous:hover, .teva-datepicker-month-menu-previous:hover, .teva-datepicker-year-menu-previous:hover, .teva-datepicker-time-menu-previous:hover, .teva-datepicker-date-menu-next:hover, .teva-datepicker-month-menu-next:hover, .teva-datepicker-year-menu-next:hover, .teva-datepicker-time-menu-next:hover, .teva-datepicker-date-menu-previous:focus, .teva-datepicker-month-menu-previous:focus, .teva-datepicker-year-menu-previous:focus, .teva-datepicker-time-menu-previous:focus, .teva-datepicker-date-menu-next:focus, .teva-datepicker-month-menu-next:focus, .teva-datepicker-year-menu-next:focus, .teva-datepicker-time-menu-next:focus {
-        background-color: #f0f0f0;
-    }
-
-.teva-datepicker-date-menu-previous, .teva-datepicker-month-menu-previous, .teva-datepicker-year-menu-previous, .teva-datepicker-time-menu-previous, .teva-datepicker-date-menu-next, .teva-datepicker-month-menu-next, .teva-datepicker-year-menu-next, .teva-datepicker-time-menu-next {
-    width: 36px;
+.teva-datepicker-date-menu-header,
+.teva-datepicker-month-menu-header,
+.teva-datepicker-year-menu-header,
+.teva-datepicker-time-menu-header {
+  width: 176px;
+  direction: ltr;
+  text-decoration: underline;
 }
-
-.teva-datepicker-date-menu-header, .teva-datepicker-month-menu-header, .teva-datepicker-time-menu-header {
-    cursor: pointer;
+.teva-datepicker-date-menu-header,
+.teva-datepicker-month-menu-header,
+.teva-datepicker-year-menu-header,
+.teva-datepicker-time-menu-header {
+  display: inline-block;
 }
-
-    .teva-datepicker-date-menu-header:hover, .teva-datepicker-month-menu-header:hover, .teva-datepicker-time-menu-header:hover, .teva-datepicker-date-menu-header:focus, .teva-datepicker-month-menu-header:focus, .teva-datepicker-time-menu-header:focus {
-        background-color: #f0f0f0;
-    }
-
+.teva-datepicker-date-menu-previous,
+.teva-datepicker-month-menu-previous,
+.teva-datepicker-year-menu-previous,
+.teva-datepicker-time-menu-previous,
+.teva-datepicker-date-menu-next,
+.teva-datepicker-month-menu-next,
+.teva-datepicker-year-menu-next,
+.teva-datepicker-time-menu-next {
+  cursor: pointer;
+  display: inline-block;
+  font-weight: bold;
+}
+.teva-datepicker-date-menu-previous:hover,
+.teva-datepicker-month-menu-previous:hover,
+.teva-datepicker-year-menu-previous:hover,
+.teva-datepicker-time-menu-previous:hover,
+.teva-datepicker-date-menu-next:hover,
+.teva-datepicker-month-menu-next:hover,
+.teva-datepicker-year-menu-next:hover,
+.teva-datepicker-time-menu-next:hover,
+.teva-datepicker-date-menu-previous:focus,
+.teva-datepicker-month-menu-previous:focus,
+.teva-datepicker-year-menu-previous:focus,
+.teva-datepicker-time-menu-previous:focus,
+.teva-datepicker-date-menu-next:focus,
+.teva-datepicker-month-menu-next:focus,
+.teva-datepicker-year-menu-next:focus,
+.teva-datepicker-time-menu-next:focus {
+  background-color: #F0F0F0;
+}
+.teva-datepicker-date-menu-previous,
+.teva-datepicker-month-menu-previous,
+.teva-datepicker-year-menu-previous,
+.teva-datepicker-time-menu-previous,
+.teva-datepicker-date-menu-next,
+.teva-datepicker-month-menu-next,
+.teva-datepicker-year-menu-next,
+.teva-datepicker-time-menu-next {
+  width: 36px;
+}
+.teva-datepicker-date-menu-header,
+.teva-datepicker-month-menu-header,
+.teva-datepicker-time-menu-header {
+  cursor: pointer;
+}
+.teva-datepicker-date-menu-header:hover,
+.teva-datepicker-month-menu-header:hover,
+.teva-datepicker-time-menu-header:hover,
+.teva-datepicker-date-menu-header:focus,
+.teva-datepicker-month-menu-header:focus,
+.teva-datepicker-time-menu-header:focus {
+  background-color: #F0F0F0;
+}
 .teva-datepicker-date-options {
-    line-height: 2em;
+  line-height: 2em;
 }
-
 .teva-datepicker-date-options-header {
-    font-weight: bold;
+  font-weight: bold;
 }
-
 .teva-datepicker-date-options-calendar-item {
-    cursor: pointer;
+  cursor: pointer;
 }
-
-    .teva-datepicker-date-options-calendar-item:hover, .teva-datepicker-date-options-calendar-item:focus {
-        background-color: #f0f0f0;
-    }
-
+.teva-datepicker-date-options-calendar-item:hover,
+.teva-datepicker-date-options-calendar-item:focus {
+  background-color: #F0F0F0;
+}
 .teva-datepicker-date-options-calendar-selected {
-    border: 1px solid #f0f0f0;
-    background-color: #f8f8f8;
+  border: 1px solid #F0F0F0;
+  background-color: #F8F8F8;
 }
-
 .teva-datepicker-date-options-calendar-now {
-    font-weight: bold;
+  font-weight: bold;
 }
-
 .teva-datepicker-date-options-calendar-other {
-    color: #bbb;
+  color: #BBBBBB;
 }
-
-.teva-datepicker-date-options-header > div, .teva-datepicker-date-options-calendar > div {
-    width: 36px;
-    display: inline-block;
-    text-align: center;
+.teva-datepicker-date-options-header > div,
+.teva-datepicker-date-options-calendar > div {
+  width: 36px;
+  display: inline-block;
+  text-align: center;
 }
-
-.teva-datepicker-month-calendar-item-number, .teva-datepicker-month-calendar-item-text {
-    line-height: 1em;
-}
-
-.teva-datepicker-month-calendar-item-number {
-    font-size: 1.2em;
-    padding-top: 12px;
-    padding-bottom: 6px;
-}
-
+.teva-datepicker-month-calendar-item-number,
 .teva-datepicker-month-calendar-item-text {
-    font-size: .8em;
-    padding-bottom: 12px;
+  line-height: 1em;
 }
-
-.teva-datepicker-month-calendar > div, .teva-datepicker-year-calendar > div {
-    display: inline-block;
-    width: 63px;
-    line-height: 63px;
-    font-size: 1.2em;
-    text-align: center;
-    cursor: pointer;
+.teva-datepicker-month-calendar-item-number {
+  font-size: 1.2em;
+  padding-top: 12px;
+  padding-bottom: 6px;
 }
-
-    .teva-datepicker-month-calendar > div:hover, .teva-datepicker-year-calendar > div:hover, .teva-datepicker-month-calendar > div:focus, .teva-datepicker-year-calendar > div:focus {
-        background-color: #f0f0f0;
-    }
-
-.teva-datepicker-month-calendar-selected, .teva-datepicker-year-calendar-selected {
-    border: 1px solid #f0f0f0;
-    background-color: #f8f8f8;
+.teva-datepicker-month-calendar-item-text {
+  font-size: 0.8em;
+  padding-bottom: 12px;
 }
-
-.teva-datepicker-month-calendar-now, .teva-datepicker-year-calendar-now {
-    font-weight: bold;
+.teva-datepicker-month-calendar > div,
+.teva-datepicker-year-calendar > div {
+  display: inline-block;
+  width: 63px;
+  line-height: 63px;
+  font-size: 1.2em;
+  text-align: center;
+  cursor: pointer;
 }
-
+.teva-datepicker-month-calendar > div:hover,
+.teva-datepicker-year-calendar > div:hover,
+.teva-datepicker-month-calendar > div:focus,
+.teva-datepicker-year-calendar > div:focus {
+  background-color: #F0F0F0;
+}
+.teva-datepicker-month-calendar-selected,
+.teva-datepicker-year-calendar-selected {
+  border: 1px solid #F0F0F0;
+  background-color: #F8F8F8;
+}
+.teva-datepicker-month-calendar-now,
+.teva-datepicker-year-calendar-now {
+  font-weight: bold;
+}
 .teva-datepicker-time-options {
-    direction: ltr;
+  direction: ltr;
 }
-
-.teva-datepicker-time-hour, .teva-datepicker-time-minute {
-    display: inline-block;
-    width: 100px;
+.teva-datepicker-time-hour,
+.teva-datepicker-time-minute {
+  display: inline-block;
+  width: 100px;
 }
-
-.teva-datepicker-time-hour-up-text, .teva-datepicker-time-minute-up-text {
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    -o-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
-    transform: rotate(90deg);
+.teva-datepicker-time-hour-up-text,
+.teva-datepicker-time-minute-up-text {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
 }
-
-    .teva-datepicker-time-hour-up-text:before, .teva-datepicker-time-minute-up-text:before {
-        content: '<';
-    }
-
-.teva-datepicker-time-hour-down-text, .teva-datepicker-time-minute-down-text {
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    -o-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
-    transform: rotate(90deg);
+.teva-datepicker-time-hour-up-text:before,
+.teva-datepicker-time-minute-up-text:before {
+  content: '<';
 }
-
-    .teva-datepicker-time-hour-down-text:after, .teva-datepicker-time-minute-down-text:after {
-        content: '>';
-    }
-
-.teva-datepicker-time-hour-up, .teva-datepicker-time-minute-up, .teva-datepicker-time-hour-down, .teva-datepicker-time-minute-down {
-    line-height: 2em;
-    font-size: 1.5em;
-    font-weight: bold;
-    text-align: center;
-    cursor: pointer;
+.teva-datepicker-time-hour-down-text,
+.teva-datepicker-time-minute-down-text {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
 }
-
-    .teva-datepicker-time-hour-up:hover, .teva-datepicker-time-minute-up:hover, .teva-datepicker-time-hour-down:hover, .teva-datepicker-time-minute-down:hover, .teva-datepicker-time-hour-up:focus, .teva-datepicker-time-minute-up:focus, .teva-datepicker-time-hour-down:focus, .teva-datepicker-time-minute-down:focus {
-        background-color: #f0f0f0;
-    }
-
-.teva-datepicker-time-hour-selected, .teva-datepicker-time-minute-selected {
-    text-align: center;
-    font-weight: bold;
-    font-size: 2em;
-    width: auto;
-    height: auto;
-    border: none;
-    -webkit-appearance: none;
-    cursor: pointer;
+.teva-datepicker-time-hour-down-text:after,
+.teva-datepicker-time-minute-down-text:after {
+  content: '>';
 }
-
-.teva-datepicker-time-hour-selected-container, .teva-datepicker-time-minute-selected-container {
-    text-align: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
+.teva-datepicker-time-hour-up,
+.teva-datepicker-time-minute-up,
+.teva-datepicker-time-hour-down,
+.teva-datepicker-time-minute-down {
+  line-height: 2em;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
 }
-
-.teva-datepicker-time-hour-selected:active, .teva-datepicker-time-minute-selected:active, .teva-datepicker-time-hour-selected:focus, .teva-datepicker-time-minute-selected:focus {
-    border: none;
+.teva-datepicker-time-hour-up:hover,
+.teva-datepicker-time-minute-up:hover,
+.teva-datepicker-time-hour-down:hover,
+.teva-datepicker-time-minute-down:hover,
+.teva-datepicker-time-hour-up:focus,
+.teva-datepicker-time-minute-up:focus,
+.teva-datepicker-time-hour-down:focus,
+.teva-datepicker-time-minute-down:focus {
+  background-color: #F0F0F0;
 }
-
+.teva-datepicker-time-hour-selected,
+.teva-datepicker-time-minute-selected {
+  text-align: center;
+  font-weight: bold;
+  font-size: 2em;
+  width: auto;
+  height: auto;
+  border: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+.teva-datepicker-time-hour-selected-container,
+.teva-datepicker-time-minute-selected-container {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.teva-datepicker-time-hour-selected:active,
+.teva-datepicker-time-minute-selected:active,
+.teva-datepicker-time-hour-selected:focus,
+.teva-datepicker-time-minute-selected:focus {
+  border: none;
+}
 .teva-datepicker-time-seperator {
-    padding-top: 1.5em;
-    padding-bottom: 1.5em;
-    display: inline-block;
-    width: 52px;
-    font-size: 2em;
-    font-weight: bold;
-    line-height: 3em;
-    vertical-align: top;
-    text-align: center;
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+  display: inline-block;
+  width: 52px;
+  font-size: 2em;
+  font-weight: bold;
+  line-height: 3em;
+  vertical-align: top;
+  text-align: center;
 }
