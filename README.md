@@ -36,6 +36,6 @@ This module contains a user interface for quick date picking, with support for e
 Date picker has 4 modes: date picker, date+time picker, month+year picker, time picker.
 Also, the date picker supports multiple languages, and is currently translated to English and Hebrew.
 Feel free to send me localizations for additional languages and those will be added.
-See sample at: https://cdn.rawgit.com/effyteva/ClientLibraries/01953f10c393413992d0eaef1982945741c38cb1/DatePicker/DatePicker.htm
+See sample at: https://cdn.rawgit.com/effyteva/ClientLibraries/9d06658e2d954dda553fe449f7c9ac525611442f/DatePicker/DatePicker.htm
 
 Technically, all libraries are written using TypeScript and LESS, I'm publishing both TS/JS and LESS/CSS versions of all libraries.
